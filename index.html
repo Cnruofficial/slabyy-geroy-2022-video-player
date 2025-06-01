@@ -2,83 +2,45 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Слабый герой (2022) смотреть онлайн</title>
+  <title>Слабый герой (2022) смотреть бесплатно</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Сериал о школьнике-гении, который борется с хулиганами с помощью ума и психологии. Слабый герой (2022) — все серии смотреть онлайн.">
+  <meta name="description" content="Одарённый ученик Ён Ши-Ын борется с насилием в школе, используя ум и психологию.">
   <meta property="og:image" content="https://i.postimg.cc/cHQ5ThZD/2022.jpg">
   <meta name="twitter:image" content="https://i.postimg.cc/cHQ5ThZD/2022.jpg">
   <meta property="og:type" content="video.tv_show">
-  <meta property="og:title" content="Слабый герой (2022) смотреть онлайн">
-  <meta property="og:description" content="История одарённого школьника Ён Ши-Ына, который сражается с буллингом умом.">
-
+  <meta property="og:title" content="Слабый герой (2022) смотреть бесплатно">
+  <meta property="og:description" content="Сериал о школьнике, который даёт отпор хулиганам благодаря интеллекту.">
   <style>
-    body {
+    html, body {
       margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
+      padding: 0;
+      background: #000;
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 20px;
     }
     .player-container {
       width: 90vw;
       max-width: 960px;
       aspect-ratio: 16 / 9;
-      margin-bottom: 20px;
     }
     #player {
       width: 100%;
       height: 100%;
     }
-    .controls {
-      width: 90vw;
-      max-width: 960px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    select, button {
-      padding: 10px;
-      font-size: 16px;
-      background-color: #222;
-      color: #fff;
-      border: 1px solid #444;
-      border-radius: 5px;
-    }
-    select:focus, button:hover {
-      outline: none;
-      border-color: #fff;
-    }
   </style>
 </head>
 <body>
-
-  <h1>Слабый герой (2022)</h1>
-  <p style="max-width:960px; text-align:center; font-size:16px;">
-    Действие разворачивается вокруг Ён Ши-Ына — одаренного ученика старшей школы. Он борется с насилием, используя ум и знания психологии.
-  </p>
 
   <div class="player-container">
     <div id="player"></div>
   </div>
 
-  <div class="controls">
-    <label>
-      Сезон:
-      <select id="seasonSelect"></select>
-    </label>
-    <label>
-      Серия:
-      <select id="episodeSelect"></select>
-    </label>
-    <button onclick="playSelected()">Смотреть</button>
-  </div>
-
   <script src="playerjs.js"></script>
   <script>
-    const data = [
+    var playlist = [
       {
         title: "1 Сезон",
         folder: [
@@ -107,49 +69,11 @@
       }
     ];
 
-    const seasonSelect = document.getElementById('seasonSelect');
-    const episodeSelect = document.getElementById('episodeSelect');
-
-    let currentSeason = 0;
-
-    function populateSeasons() {
-      data.forEach((season, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = season.title;
-        seasonSelect.appendChild(option);
-      });
-    }
-
-    function populateEpisodes(seasonIndex) {
-      episodeSelect.innerHTML = '';
-      data[seasonIndex].folder.forEach((episode, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = episode.title;
-        episodeSelect.appendChild(option);
-      });
-    }
-
-    function playSelected() {
-      const season = data[seasonSelect.value];
-      const episode = season.folder[episodeSelect.value];
-      new Playerjs({
-        id: "player",
-        file: episode.file,
-        poster: "https://i.postimg.cc/cHQ5ThZD/2022.jpg"
-      });
-    }
-
-    seasonSelect.addEventListener('change', () => {
-      currentSeason = seasonSelect.value;
-      populateEpisodes(currentSeason);
+    new Playerjs({
+      id: "player",
+      file: playlist,
+      poster: "https://i.postimg.cc/cHQ5ThZD/2022.jpg"
     });
-
-    // Инициализация
-    populateSeasons();
-    populateEpisodes(currentSeason);
-    playSelected(); // автозапуск первой серии
   </script>
 
 </body>
