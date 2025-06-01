@@ -2,56 +2,73 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Ошибка воспроизведения звука</title>
+  <title>Ошибка звука</title>
   <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       background-color: #ffffff;
-      color: #980000;
       font-family: 'Jost', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
     }
 
     .error-box {
+      position: relative;
+      width: 90vw;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
       background-color: #fff;
       border: 2px solid #980000;
       border-radius: 12px;
-      padding: 40px;
-      max-width: 600px;
-      text-align: center;
       box-shadow: 0 0 12px rgba(152, 0, 0, 0.3);
+      padding: 2vw;
+      box-sizing: border-box;
+      color: #980000;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .error-box h1 {
-      color: #980000;
-      margin-bottom: 20px;
-      font-size: 28px;
+      font-size: 2.2vw;
+      margin-bottom: 1vw;
     }
 
     .error-box p {
-      margin-bottom: 15px;
-      font-size: 18px;
+      font-size: 1.2vw;
+      margin-bottom: 1vw;
     }
 
     .contact {
-      color: #980000;
+      font-weight: bold;
       text-decoration: underline;
       cursor: pointer;
-      font-weight: bold;
+      font-size: 1.2vw;
+    }
+
+    @media (max-width: 600px) {
+      .error-box h1 {
+        font-size: 5vw;
+      }
+
+      .error-box p, .contact {
+        font-size: 3.5vw;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="error-box">
-    <h1>⚠️ Ошибка: Отсутствует звук</h1>
-    <p>В этом видео нет звуковой дорожки. Вы не услышите, что говорят в сериале.</p>
-    <p>Это может быть связано с неправильной загрузкой файла или повреждённым источником.</p>
-    <p><span class="contact" onclick="alert('Пожалуйста, свяжитесь с владельцем сайта или загрузчиком файла для устранения проблемы.');">Свяжитесь с поддержкой</span>, чтобы мы могли это исправить.</p>
+    <h1>⚠️ Ошибка: Звук отсутствует</h1>
+    <p>На этом видео нет звуковой дорожки. Вы не услышите, что говорят в сериале.</p>
+    <p>Файл может быть повреждён или загружен неправильно.</p>
+    <p><span class="contact" onclick="alert('Свяжитесь с владельцем или загрузчиком видео для устранения ошибки.');">Связаться с поддержкой</span></p>
   </div>
 
 </body>
