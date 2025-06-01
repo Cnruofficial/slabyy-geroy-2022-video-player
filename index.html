@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Слабый герой (2022) смотреть онлайн</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сериал о школьнике-гении, который борется с хулиганами с помощью ума и психологии. Слабый герой (2022) — все серии смотреть онлайн.">
+  <meta property="og:image" content="https://i.postimg.cc/cHQ5ThZD/2022.jpg">
+  <meta name="twitter:image" content="https://i.postimg.cc/cHQ5ThZD/2022.jpg">
+  <meta property="og:type" content="video.tv_show">
+  <meta property="og:title" content="Слабый герой (2022) смотреть онлайн">
+  <meta property="og:description" content="История одарённого школьника Ён Ши-Ына, который сражается с буллингом умом.">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .player-container {
+      width: 90vw;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 20px;
+    }
+    #player {
+      width: 100%;
+      height: 100%;
+    }
+    .controls {
+      width: 90vw;
+      max-width: 960px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    select, button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+    select:focus, button:hover {
+      outline: none;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Слабый герой (2022)</h1>
+  <p style="max-width:960px; text-align:center; font-size:16px;">
+    Действие разворачивается вокруг Ён Ши-Ына — одаренного ученика старшей школы. Он борется с насилием, используя ум и знания психологии.
+  </p>
+
+  <div class="player-container">
+    <div id="player"></div>
+  </div>
+
+  <div class="controls">
+    <label>
+      Сезон:
+      <select id="seasonSelect"></select>
+    </label>
+    <label>
+      Серия:
+      <select id="episodeSelect"></select>
+    </label>
+    <button onclick="playSelected()">Смотреть</button>
+  </div>
+
+  <script src="playerjs.js"></script>
+  <script>
+    const data = [
+      {
+        title: "1 Сезон",
+        folder: [
+          { title: "1 Серия", file: "https://pixeldrain.com/api/file/vv2Udqo1" },
+          { title: "2 Серия", file: "https://pixeldrain.com/api/file/5nDG6bTs" },
+          { title: "3 Серия", file: "https://pixeldrain.com/api/file/yAnEkgBv" },
+          { title: "4 Серия", file: "https://pixeldrain.com/api/file/gDYR65Mp" },
+          { title: "5 Серия", file: "https://pixeldrain.com/api/file/o3YwcrMj" },
+          { title: "6 Серия", file: "https://pixeldrain.com/api/file/na3Jnmi3" },
+          { title: "7 Серия", file: "https://pixeldrain.com/api/file/pJxKkSo5" },
+          { title: "8 Серия", file: "https://pixeldrain.com/api/file/QL1Wrmjm" }
+        ]
+      },
+      {
+        title: "2 Сезон",
+        folder: [
+          { title: "1 Серия", file: "https://pixeldrain.com/api/file/3ya79LAE" },
+          { title: "2 Серия", file: "https://pixeldrain.com/api/file/msh7m5Ui" },
+          { title: "3 Серия", file: "https://pixeldrain.com/api/file/eHxipqtZ" },
+          { title: "4 Серия", file: "https://pixeldrain.com/api/file/LxXM72TY" },
+          { title: "5 Серия", file: "https://pixeldrain.com/api/file/vYxGmTdy" },
+          { title: "6 Серия", file: "https://pixeldrain.com/api/file/oSXzjMg6" },
+          { title: "7 Серия", file: "https://pixeldrain.com/api/file/qQGyLVAh" },
+          { title: "8 Серия", file: "https://pixeldrain.com/api/file/um2NzxpJ" }
+        ]
+      }
+    ];
+
+    const seasonSelect = document.getElementById('seasonSelect');
+    const episodeSelect = document.getElementById('episodeSelect');
+
+    let currentSeason = 0;
+
+    function populateSeasons() {
+      data.forEach((season, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = season.title;
+        seasonSelect.appendChild(option);
+      });
+    }
+
+    function populateEpisodes(seasonIndex) {
+      episodeSelect.innerHTML = '';
+      data[seasonIndex].folder.forEach((episode, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = episode.title;
+        episodeSelect.appendChild(option);
+      });
+    }
+
+    function playSelected() {
+      const season = data[seasonSelect.value];
+      const episode = season.folder[episodeSelect.value];
+      new Playerjs({
+        id: "player",
+        file: episode.file,
+        poster: "https://i.postimg.cc/cHQ5ThZD/2022.jpg"
+      });
+    }
+
+    seasonSelect.addEventListener('change', () => {
+      currentSeason = seasonSelect.value;
+      populateEpisodes(currentSeason);
+    });
+
+    // Инициализация
+    populateSeasons();
+    populateEpisodes(currentSeason);
+    playSelected(); // автозапуск первой серии
+  </script>
+
+</body>
+</html>
